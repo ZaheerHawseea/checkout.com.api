@@ -31,7 +31,7 @@ namespace checkout.com.api.Stores.Default
             return Task.FromResult(Orders.AsQueryable());
         }
 
-        public Task<Order> FindById(string id)
+        public Task<Order> FindByIdAsync(string id)
         {
             return Task.FromResult(Orders.SingleOrDefault(o => o.Id == id));
         }

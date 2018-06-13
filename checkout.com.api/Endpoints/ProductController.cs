@@ -30,7 +30,7 @@ namespace checkout.com.api.Endpoints
         [ODataRoute(Constants.ODataRoutes.ProductById)]
         public async Task<IActionResult> GetById(string id)
         {
-            return Ok(await productStore.FindById(id));
+            return Ok(await productStore.FindByIdAsync(id));
         }
 
         [HttpPost]

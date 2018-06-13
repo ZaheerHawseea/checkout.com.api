@@ -32,6 +32,9 @@ namespace checkout.com.api.Configuration
             services.AddTransient<IOrderStore<Order>, InMemoryOrderStore>();
             services.AddTransient<IModelBuilder, DataModelBuilder>();
             services.AddTransient<IProcessOrder, DefaultProcessOrder>();
+            services.AddTransient<IAddItemsToOrder, DefaultAddItemsToOrder>();
+            services.AddTransient<IRemoveItemsFromOrder, DefaultRemoveItemsFromOrder>();
+            services.AddTransient<IClearOrder, DefaultClearOrder>();
         }
     }
 }

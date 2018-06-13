@@ -7,7 +7,6 @@ namespace checkout.com.api.Dto
 {
     public class Billing
     {
-        public string CustomerName { get; set; }
         public string CreditCardNumber { get; set; }
         public string CCV { get; set; }
     }

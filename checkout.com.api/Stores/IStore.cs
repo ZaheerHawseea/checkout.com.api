@@ -11,7 +11,7 @@ namespace checkout.com.api.Stores
     {
         Task<IQueryable<T>> FindAllAsync();
 
-        Task<T> FindById(string id);
+        Task<T> FindByIdAsync(string id);
 
         Task<T> AddAsync(T entity);
 

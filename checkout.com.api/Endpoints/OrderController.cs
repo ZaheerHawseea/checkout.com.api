@@ -16,11 +16,21 @@ namespace checkout.com.api.Endpoints
     {
         private readonly IOrderStore<Order> orderStore;
         private readonly IProcessOrder processOrder;
+        private readonly IAddItemsToOrder addItemsToOrder;
+        private readonly IRemoveItemsFromOrder removeItemsFromOrder;
+        private readonly IClearOrder clearOrder;
 
-        public OrderController(IOrderStore<Order> orderStore, IProcessOrder processOrder)
+        public OrderController(IOrderStore<Order> orderStore, 
+                               IProcessOrder processOrder, 
+                               IAddItemsToOrder addItemsToOrder, 
+                               IRemoveItemsFromOrder removeItemsFromOrder, 
+                               IClearOrder clearOrder)
         {
             this.orderStore = orderStore;
             this.processOrder = processOrder;
+            this.addItemsToOrder = addItemsToOrder;
+            this.removeItemsFromOrder = removeItemsFromOrder;
+            this.clearOrder = clearOrder;
         }
 
         [EnableQuery]
@@ -33,7 +43,7 @@ namespace checkout.com.api.Endpoints
         [ODataRoute(Constants.ODataRoutes.OrderById)]
         public async Task<IActionResult> GetById(string id)
         {
-            return Ok(await orderStore.FindById(id));
+            return Ok(await orderStore.FindByIdAsync(id));
         }
 
         [HttpPost]
@@ -58,16 +68,68 @@ namespace checkout.com.api.Endpoints
 
         [HttpPost]
         [ODataRoute(Constants.ODataRoutes.ProcessOrder)]
-        public async Task<IActionResult> ProcessOrder(string id, [FromBody] Billing billing)
+        public async Task<IActionResult> ProcessOrder([FromODataUri] string id, ODataActionParameters parameters)
         {
-            var order = await orderStore.FindById(id);
+            var order = await orderStore.FindByIdAsync(id);
+            var billing = (Billing) parameters.SingleOrDefault(p => p.Key == Constants.Actions.Parameters.Billing).Value;
+
+            if (order == null || billing == null)
+            {
+                return BadRequest();
+            }
+
+            await processOrder.ExecuteAsync(order, billing);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [ODataRoute(Constants.ODataRoutes.AddItemsToOrder)]
+        public async Task<IActionResult> AddItemsToOrder([FromODataUri] string id, ODataActionParameters parameters)
+        {
+            var order = await orderStore.FindByIdAsync(id);
+            var items = (List<Item>) parameters.SingleOrDefault(p => p.Key == Constants.Actions.Parameters.Items).Value;
+
+            if (order == null || items == null)
+            {
+                return BadRequest();
+            }
+
+            await addItemsToOrder.ExecuteAsync(order, items);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [ODataRoute(Constants.ODataRoutes.RemoveItemFromOrder)]
+        public async Task<IActionResult> RemoveItemsFromOrder([FromODataUri] string id, ODataActionParameters parameters)
+        {
+            var order = await orderStore.FindByIdAsync(id);
+            var items = (List<Item>)parameters.SingleOrDefault(p => p.Key == Constants.Actions.Parameters.Items).Value;
+
+            if (order == null || items == null)
+            {
+                return BadRequest();
+            }
+
+            await removeItemsFromOrder.ExecuteAsync(order, items);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [ODataRoute(Constants.ODataRoutes.ClearOrder)]
+        public async Task<IActionResult> ClearOrder([FromODataUri] string id, ODataActionParameters parameters)
+        {
+            var order = await orderStore.FindByIdAsync(id);
+            var delete = (bool) parameters.SingleOrDefault(p => p.Key == Constants.Actions.Parameters.Delete).Value;
 
             if (order == null)
             {
                 return BadRequest();
             }
 
-            await processOrder.ExecuteAsync(order, billing);
+            await clearOrder.ExecuteAsync(order, delete);
 
             return Ok();
         }

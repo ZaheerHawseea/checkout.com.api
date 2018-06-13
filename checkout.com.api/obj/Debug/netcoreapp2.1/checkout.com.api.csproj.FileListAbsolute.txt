@@ -26,3 +26,17 @@ C:\Drive\GitHub\Local\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.
 C:\Drive\GitHub\Local\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.RazorTargetAssemblyInfo.cache
 C:\Drive\GitHub\Local\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.dll
 C:\Drive\GitHub\Local\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.pdb
+C:\Git\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.deps.json
+C:\Git\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.runtimeconfig.json
+C:\Git\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.runtimeconfig.dev.json
+C:\Git\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.dll
+C:\Git\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.pdb
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.csprojResolveAssemblyReference.cache
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.csproj.CoreCompileInputs.cache
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.RazorAssemblyInfo.cache
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.RazorAssemblyInfo.cs
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.AssemblyInfoInputs.cache
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.AssemblyInfo.cs
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.RazorTargetAssemblyInfo.cache
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.dll
+C:\Git\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.pdb
