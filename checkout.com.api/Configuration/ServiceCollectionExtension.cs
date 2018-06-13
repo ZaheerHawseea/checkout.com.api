@@ -9,6 +9,9 @@ using checkout.com.api.Stores;
 using checkout.com.api.Stores.Default;
 using checkout.com.api.Services;
 using checkout.com.api.Services.Default;
+using checkout.com.api.FilterAttributes;
+using checkout.com.api.Action;
+using checkout.com.api.Action.Default;
 
 namespace checkout.com.api.Configuration
 {
@@ -18,7 +21,9 @@ namespace checkout.com.api.Configuration
         {
             services.AddOData();
 
-            services.AddMvc()
+            services.AddMvc(options => {
+                options.Filters.Add(new ActionValidationAttribute());
+            })
                     .AddXmlDataContractSerializerFormatters();
 
             // Register dependancies
@@ -26,6 +31,7 @@ namespace checkout.com.api.Configuration
             services.AddTransient<IItemStore<Item>, InMemoryItemStore>();
             services.AddTransient<IOrderStore<Order>, InMemoryOrderStore>();
             services.AddTransient<IModelBuilder, DataModelBuilder>();
+            services.AddTransient<IProcessOrder, DefaultProcessOrder>();
         }
     }
 }

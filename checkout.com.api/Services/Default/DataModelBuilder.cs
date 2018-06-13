@@ -20,6 +20,8 @@ namespace checkout.com.api.Services.Default
             builder.EntitySet<Item>(nameof(Item));
             builder.EntitySet<Order>(nameof(Order));
 
+            builder.Action(Constants.Actions.ProcessOrder);
+
             return builder.GetEdmModel();
         }
     }

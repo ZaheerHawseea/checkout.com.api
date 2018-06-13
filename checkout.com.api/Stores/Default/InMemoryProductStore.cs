@@ -12,14 +12,16 @@ namespace checkout.com.api.Stores.Default
 
         public Task<Product> AddAsync(Product product)
         {
+            product.Id = product.Id ?? Guid.NewGuid().ToString();
+
             Products.Add(product);
 
             return Task.FromResult(product);
         }
 
-        public Task<bool> DeleteAsync(Product product)
+        public Task<bool> DeleteAsync(string id)
         {
-            var productToDelete = Products.Single(p => p.Id == product.Id);
+            var productToDelete = Products.SingleOrDefault(p => p.Id == id);
 
             return Task.FromResult(productToDelete != null ? Products.Remove(productToDelete) : false);
         }
@@ -29,9 +31,23 @@ namespace checkout.com.api.Stores.Default
             return Task.FromResult(Products.AsQueryable());
         }
 
-        public Task<bool> UpdateAsync(Product product)
+        public Task<Product> FindById(string id)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Products.SingleOrDefault(p => p.Id == id));
+        }
+
+        public Task<Product> UpdateAsync(string id, Product product)
+        {
+            var productToUpdate = Products.SingleOrDefault(p => p.Id == id);
+
+            if (productToUpdate == null) return Task.FromResult<Product>(null);
+
+            product.Id = id;
+
+            Products.Remove(productToUpdate);
+            Products.Add(product);
+
+            return Task.FromResult(product);
         }
     }
 }

@@ -21,8 +21,8 @@ namespace checkout.com.api.Configuration
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc(routeBuilder => 
-                            routeBuilder.MapODataServiceRoute("ODataRoutes", prefix, ((IModelBuilder) app.ApplicationServices.GetService(typeof(IModelBuilder))).GetEdmModel(app.ApplicationServices)));
+            app.UseMvc(routeBuilder =>
+                routeBuilder.MapODataServiceRoute("ODataRoutes", prefix, ((IModelBuilder)app.ApplicationServices.GetService(typeof(IModelBuilder))).GetEdmModel(app.ApplicationServices)));
 
             app.Run(async (context) =>
             {

@@ -8,24 +8,46 @@ namespace checkout.com.api.Stores.Default
 {
     public class InMemoryOrderStore : IOrderStore<Order>
     {
-        public Task<Order> AddAsync(Order entity)
+        private static IList<Order> Orders { get; set; } = new List<Order>();
+
+        public Task<Order> AddAsync(Order order)
         {
-            throw new NotImplementedException();
+            order.Id = order.Id ?? Guid.NewGuid().ToString();
+
+            Orders.Add(order);
+
+            return Task.FromResult(order);
         }
 
-        public Task<bool> DeleteAsync(Order entity)
+        public Task<bool> DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            var orderToDelete = Orders.SingleOrDefault(o => o.Id == id);
+
+            return Task.FromResult(orderToDelete != null ? Orders.Remove(orderToDelete) : false);
         }
 
         public Task<IQueryable<Order>> FindAllAsync()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Orders.AsQueryable());
         }
 
-        public Task<bool> UpdateAsync(Order entity)
+        public Task<Order> FindById(string id)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Orders.SingleOrDefault(o => o.Id == id));
+        }
+
+        public Task<Order> UpdateAsync(string id, Order order)
+        {
+            var orderToUpdate = Orders.SingleOrDefault(o => o.Id == id);
+
+            if (orderToUpdate == null) return Task.FromResult<Order>(null);
+
+            order.Id = id;
+
+            Orders.Remove(orderToUpdate);
+            Orders.Add(order);
+
+            return Task.FromResult(order);
         }
     }
 }

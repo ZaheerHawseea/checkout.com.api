@@ -8,24 +8,46 @@ namespace checkout.com.api.Stores.Default
 {
     public class InMemoryItemStore : IItemStore<Item>
     {
-        public Task<Item> AddAsync(Item entity)
+        private static IList<Item> Items { get; set; } = new List<Item>();
+
+        public Task<Item> AddAsync(Item item)
         {
-            throw new NotImplementedException();
+            item.Id = item.Id ?? Guid.NewGuid().ToString();
+
+            Items.Add(item);
+
+            return Task.FromResult(item);
         }
 
-        public Task<bool> DeleteAsync(Item entity)
+        public Task<bool> DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            var itemToDelete = Items.SingleOrDefault(i => i.Id == id);
+
+            return Task.FromResult(itemToDelete != null ? Items.Remove(itemToDelete) : false);
         }
 
         public Task<IQueryable<Item>> FindAllAsync()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Items.AsQueryable());
         }
 
-        public Task<bool> UpdateAsync(Item entity)
+        public Task<Item> FindById(string id)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Items.SingleOrDefault(i => i.Id == id));
+        }
+
+        public Task<Item> UpdateAsync(string id, Item item)
+        {
+            var itemToUpdate = Items.SingleOrDefault(i => i.Id == id);
+
+            if (itemToUpdate == null) return Task.FromResult<Item>(null);
+
+            item.Id = id;
+
+            Items.Remove(itemToUpdate);
+            Items.Add(item);
+
+            return Task.FromResult(item);
         }
     }
 }

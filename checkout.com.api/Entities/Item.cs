@@ -8,7 +8,7 @@ namespace checkout.com.api.Entities
 {
     public class Item : IEntity
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public Product Product { get; set; }
 

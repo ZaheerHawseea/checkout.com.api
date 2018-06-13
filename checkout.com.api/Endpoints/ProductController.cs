@@ -7,6 +7,7 @@ using checkout.com.api.Entities;
 using checkout.com.api.Stores;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNet.OData.Routing;
+using System.Net;
 
 namespace checkout.com.api.Endpoints
 {
@@ -20,22 +21,36 @@ namespace checkout.com.api.Endpoints
         }
 
         [EnableQuery]
-        public async Task<IQueryable<Product>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await productStore.FindAllAsync();
+            return Ok(await productStore.FindAllAsync());
         }
 
         [EnableQuery]
-        [ODataRoute("Product({Id})")]
-        public async Task<Product> GetById(int Id)
+        [ODataRoute(Constants.ODataRoutes.ProductById)]
+        public async Task<IActionResult> GetById(string id)
         {
-            throw new NotImplementedException();
+            return Ok(await productStore.FindById(id));
         }
 
         [HttpPost]
-        public async void Post([FromBody] Product product)
+        public async Task<IActionResult> Post([FromBody] Product product)
         {
-            await productStore.AddAsync(product);
+            return Created(await productStore.AddAsync(product));
+        }
+
+        [HttpPut]
+        [ODataRoute(Constants.ODataRoutes.ProductById)]
+        public async Task<IActionResult> Put(string id, [FromBody] Product product)
+        {
+            return Updated(await productStore.UpdateAsync(id, product));
+        }
+
+        [HttpDelete]
+        [ODataRoute(Constants.ODataRoutes.ProductById)]
+        public async Task<IActionResult> Delete(string id)
+        {
+            return Ok(await productStore.DeleteAsync(id));
         }
     }
 }

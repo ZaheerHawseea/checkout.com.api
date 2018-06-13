@@ -11,10 +11,12 @@ namespace checkout.com.api.Stores
     {
         Task<IQueryable<T>> FindAllAsync();
 
+        Task<T> FindById(string id);
+
         Task<T> AddAsync(T entity);
 
-        Task<bool> UpdateAsync(T entity);
+        Task<T> UpdateAsync(string id, T entity);
 
-        Task<bool> DeleteAsync(T entity);
+        Task<bool> DeleteAsync(string id);
     }
 }
