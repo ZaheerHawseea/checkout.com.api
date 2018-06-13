@@ -9,5 +9,6 @@ namespace checkout.com.api.Stores
     public interface IItemStore<TItem> : IStore<TItem>
         where TItem : Item
     {
+        Task<IQueryable<TItem>> FindByOrderIdAsync(string orderId);
     }
 }

@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "262e400c-6037-4b03-991c-a793f0778d98",
+		"name": "Checkout",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "$metadata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Delete\" : true\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/$metadata",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"$metadata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{URL}}/api/Product",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Name\" : \"Asus Rog Strix Z370-H Motherboard\",\n\t\"Brand\" : \"Asus Rog\",\n\t\"Price\" : 145.21\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/Product",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{URL}}/api/Order",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"CustomerName\" : \"Zaheer Hawseea\"\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/Order",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order/Checkout.AddItems",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Items\" : [\n\t\t{\n\t\t\t\"OrderId\" : \"2ecd8a94-e654-4ea1-8910-083a4675038b\",\n\t\t\t\"ProductId\" : \"7c9f39c8-58d1-4531-9d75-bac9c0d5b756\",\n\t\t\t\"Quantity\" : 1\n\t\t}\t\n\t]\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/Order('2ecd8a94-e654-4ea1-8910-083a4675038b')/Checkout.AddItems",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Order('2ecd8a94-e654-4ea1-8910-083a4675038b')",
+						"Checkout.AddItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Item",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{URL}}/api/Item?$filter=OrderId eq '2ecd8a94-e654-4ea1-8910-083a4675038b'",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Item"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "OrderId eq '2ecd8a94-e654-4ea1-8910-083a4675038b'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order/Checkout.RemoveItems",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Items\" : [\n\t\t{\n\t\t\t\"OrderId\" : \"224e1abf-7d59-4f0f-94bc-c489ad35ba6d\",\n\t\t\t\"Id\" : \"3c4fc5a0-5ec1-4dfc-b832-bd9d0263d08c\",\n\t\t}\t\n\t]\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/Order('224e1abf-7d59-4f0f-94bc-c489ad35ba6d')/Checkout.RemoveItems",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Order('224e1abf-7d59-4f0f-94bc-c489ad35ba6d')",
+						"Checkout.RemoveItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order/Checkout.Clear",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Delete\" : false\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/Order('224e1abf-7d59-4f0f-94bc-c489ad35ba6d')/Checkout.Clear",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Order('224e1abf-7d59-4f0f-94bc-c489ad35ba6d')",
+						"Checkout.Clear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order/Checkout.Process",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Billing\" : {\n\t\t\"CreditCardNumber\" : \"0046521005706\",\n\t\t\"CCV\" : \"327\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/Order('224e1abf-7d59-4f0f-94bc-c489ad35ba6d')/Checkout.Process",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Order('224e1abf-7d59-4f0f-94bc-c489ad35ba6d')",
+						"Checkout.Process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Item - Change Quantity",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\" : \"\",\n\t\"OrderId\" : \"\",\n\t\"ProductId\" : \"\",\n\t\"Quantity\" : 2\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/Item('ss')",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"Item('ss')"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

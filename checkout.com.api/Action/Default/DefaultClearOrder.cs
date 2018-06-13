@@ -20,7 +20,9 @@ namespace checkout.com.api.Action.Default
 
         public async Task ExecuteAsync(Order order, bool delete)
         {
-            foreach (var item in order.Items)
+            var items = await itemStore.FindByOrderIdAsync(order.Id);
+
+            foreach (var item in items)
             {
                 await itemStore.DeleteAsync(item.Id);
             }

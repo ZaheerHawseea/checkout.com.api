@@ -88,14 +88,14 @@ namespace checkout.com.api.Endpoints
         public async Task<IActionResult> AddItemsToOrder([FromODataUri] string id, ODataActionParameters parameters)
         {
             var order = await orderStore.FindByIdAsync(id);
-            var items = (List<Item>) parameters.SingleOrDefault(p => p.Key == Constants.Actions.Parameters.Items).Value;
+            var items = (IEnumerable<Item>) parameters.SingleOrDefault(p => p.Key == Constants.Actions.Parameters.Items).Value;
 
             if (order == null || items == null)
             {
                 return BadRequest();
             }
 
-            await addItemsToOrder.ExecuteAsync(order, items);
+            await addItemsToOrder.ExecuteAsync(order, items.ToList());
 
             return Ok();
         }
@@ -105,14 +105,14 @@ namespace checkout.com.api.Endpoints
         public async Task<IActionResult> RemoveItemsFromOrder([FromODataUri] string id, ODataActionParameters parameters)
         {
             var order = await orderStore.FindByIdAsync(id);
-            var items = (List<Item>)parameters.SingleOrDefault(p => p.Key == Constants.Actions.Parameters.Items).Value;
+            var items = (IEnumerable<Item>)parameters.SingleOrDefault(p => p.Key == Constants.Actions.Parameters.Items).Value;
 
             if (order == null || items == null)
             {
                 return BadRequest();
             }
 
-            await removeItemsFromOrder.ExecuteAsync(order, items);
+            await removeItemsFromOrder.ExecuteAsync(order, items.ToList());
 
             return Ok();
         }

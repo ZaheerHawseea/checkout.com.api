@@ -36,6 +36,11 @@ namespace checkout.com.api.Stores.Default
             return Task.FromResult(Items.SingleOrDefault(i => i.Id == id));
         }
 
+        public Task<IQueryable<Item>> FindByOrderIdAsync(string orderId)
+        {
+            return Task.FromResult(Items.Where(i => i.OrderId == orderId).AsQueryable());
+        }
+
         public Task<Item> UpdateAsync(string id, Item item)
         {
             var itemToUpdate = Items.SingleOrDefault(i => i.Id == id);

@@ -26,15 +26,17 @@ namespace checkout.com.api.Services.Default
 
             builder.EntityType<Order>()
                 .Action(Constants.Actions.AddItemsToOrder)
-                .Parameter<List<Item>>(Constants.Actions.Parameters.Items);
+                .CollectionParameter<Item>(Constants.Actions.Parameters.Items);
 
             builder.EntityType<Order>()
                 .Action(Constants.Actions.RemoveItemFromOrder)
-                .Parameter<List<Item>>(Constants.Actions.Parameters.Items);
+                .CollectionParameter<Item>(Constants.Actions.Parameters.Items);
 
             builder.EntityType<Order>()
                 .Action(Constants.Actions.ClearOrder)
                 .Parameter<bool>(Constants.Actions.Parameters.Delete);
+
+            builder.EntityType<Item>().Count().Filter().OrderBy().Expand().Select();
 
             return builder.GetEdmModel();
         }
