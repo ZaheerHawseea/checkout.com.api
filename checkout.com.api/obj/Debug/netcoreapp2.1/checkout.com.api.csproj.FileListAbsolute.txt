@@ -1,0 +1,14 @@
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.deps.json
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.runtimeconfig.json
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.runtimeconfig.dev.json
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.dll
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\bin\Debug\netcoreapp2.1\checkout.com.api.pdb
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.csprojResolveAssemblyReference.cache
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.csproj.CoreCompileInputs.cache
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.RazorAssemblyInfo.cache
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.RazorAssemblyInfo.cs
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.AssemblyInfoInputs.cache
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.AssemblyInfo.cs
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.RazorTargetAssemblyInfo.cache
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.dll
+D:\Backup\Professional\Checkout\Technical Test\Source\checkout.com.api\checkout.com.api\obj\Debug\netcoreapp2.1\checkout.com.api.pdb
