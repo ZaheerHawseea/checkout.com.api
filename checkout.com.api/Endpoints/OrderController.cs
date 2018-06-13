@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using checkout.com.api.Action;
+using checkout.com.api.Dto;
 using checkout.com.api.Entities;
 using checkout.com.api.Stores;
 using Microsoft.AspNet.OData;
@@ -13,10 +15,12 @@ namespace checkout.com.api.Endpoints
     public class OrderController : ODataController
     {
         private readonly IOrderStore<Order> orderStore;
+        private readonly IProcessOrder processOrder;
 
-        public OrderController(IOrderStore<Order> orderStore)
+        public OrderController(IOrderStore<Order> orderStore, IProcessOrder processOrder)
         {
             this.orderStore = orderStore;
+            this.processOrder = processOrder;
         }
 
         [EnableQuery]
@@ -50,6 +54,22 @@ namespace checkout.com.api.Endpoints
         public async Task<IActionResult> Delete(string id)
         {
             return Ok(await orderStore.DeleteAsync(id));
+        }
+
+        [HttpPost]
+        [ODataRoute(Constants.ODataRoutes.ProcessOrder)]
+        public async Task<IActionResult> ProcessOrder(string id, [FromBody] Billing billing)
+        {
+            var order = await orderStore.FindById(id);
+
+            if (order == null)
+            {
+                return BadRequest();
+            }
+
+            await processOrder.ExecuteAsync(order, billing);
+
+            return Ok();
         }
     }
 }

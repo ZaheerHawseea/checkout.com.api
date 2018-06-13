@@ -11,6 +11,7 @@ namespace checkout.com.api.Action.Default
     {
         public Task ExecuteAsync(Order order, Billing billing)
         {
+            // TODO: Logics to be added here do the connection to the processing logics..either calling another .NET library or via an API.
             return Task.FromResult(true);
         }
     }
