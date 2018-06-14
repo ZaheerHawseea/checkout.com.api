@@ -5563,17 +5563,17 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "yGNcvi3ZeR92V2Q3M99jV1Yo0uHbQY0i0q0vC7eF1O9pa289jVVzCBfwOTQRhHTN3OTkZCx0mkdvKVll73d9pw==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
+        "Microsoft.CodeAnalysis.Analyzers.1.1.0.nupkg.sha512",
+        "Microsoft.CodeAnalysis.Analyzers.nuspec",
         "ThirdPartyNotices.rtf",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.VisualBasic.Analyzers.dll",
-        "microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",
-        "microsoft.codeanalysis.analyzers.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
@@ -8809,10 +8809,12 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+      "sha512": "qQoS2+Q+q+6MRrW3bmiXX5M47VOFXT14Cmaehh5TwDanTlthFF2NuujFRXnT45oLLL9Z/getAOWgB0LgMU7hEQ==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
+        "System.Linq.Queryable.4.0.1.nupkg.sha512",
+        "System.Linq.Queryable.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -8860,9 +8862,7 @@
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.linq.queryable.4.0.1.nupkg.sha512",
-        "system.linq.queryable.nuspec"
+        "ref/xamarinwatchos10/_._"
       ]
     },
     "System.Memory/4.5.0": {
@@ -11603,7 +11603,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\princ\\.nuget\\packages\\": {},
+    "C:\\Users\\hawseeaz\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -11612,25 +11612,28 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Git\\checkout.com.api\\checkout.com.api.csproj",
+      "projectUniqueName": "C:\\Drive\\GitHub\\Local\\checkout.com.api\\checkout.com.api.csproj",
       "projectName": "checkout.com.api",
-      "projectPath": "C:\\Git\\checkout.com.api\\checkout.com.api.csproj",
-      "packagesPath": "C:\\Users\\princ\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\checkout.com.api\\obj\\",
+      "projectPath": "C:\\Drive\\GitHub\\Local\\checkout.com.api\\checkout.com.api.csproj",
+      "packagesPath": "C:\\Users\\hawseeaz\\.nuget\\packages\\",
+      "outputPath": "C:\\Drive\\GitHub\\Local\\checkout.com.api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\princ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hawseeaz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Drive\\Local Nuget": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://proget/nuget/SDWorxNuget": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://sdworx.myget.org/F/multi-country/auth/1127b6e6-31f7-425a-a398-c2b46de389ac/api/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {

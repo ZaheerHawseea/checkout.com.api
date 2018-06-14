@@ -32,16 +32,21 @@ namespace checkout.com.api.Endpoints
             return Ok(await itemStore.FindByIdAsync(id));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Item item)
-        {
-            return Created(await itemStore.AddAsync(item));
-        }
-
         [HttpPut]
         [ODataRoute(Constants.ODataRoutes.ItemById)]
         public async Task<IActionResult> Put(string id, [FromBody] Item item)
         {
+            return Updated(await itemStore.UpdateAsync(id, item));
+        }
+
+        [HttpPatch]
+        [ODataRoute(Constants.ODataRoutes.ItemById)]
+        public async Task<IActionResult> Patch(string id, [FromBody] Delta<Item> deltaItem)
+        {
+            var item = await itemStore.FindByIdAsync(id);
+
+            deltaItem.Patch(item);
+
             return Updated(await itemStore.UpdateAsync(id, item));
         }
 
