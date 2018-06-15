@@ -49,5 +49,10 @@ namespace checkout.com.api.Stores.Default
 
             return Task.FromResult(order);
         }
+
+        public Task<int> Count()
+        {
+            return Task.FromResult(Orders.Count);
+        }
     }
 }

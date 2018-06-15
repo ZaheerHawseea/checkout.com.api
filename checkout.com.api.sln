@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkout.com.api", "checkout.com.api\checkout.com.api.csproj", "{2E694E0A-2160-4A13-9859-35714B93F782}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "checkout.com.api", "checkout.com.api\checkout.com.api.csproj", "{2E694E0A-2160-4A13-9859-35714B93F782}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkout.com.api.test", "checkout.com.api.test\checkout.com.api.test.csproj", "{210C96E0-0A13-4D1D-AFC6-D198C20BE77C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2E694E0A-2160-4A13-9859-35714B93F782}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E694E0A-2160-4A13-9859-35714B93F782}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E694E0A-2160-4A13-9859-35714B93F782}.Release|Any CPU.Build.0 = Release|Any CPU
+		{210C96E0-0A13-4D1D-AFC6-D198C20BE77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210C96E0-0A13-4D1D-AFC6-D198C20BE77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210C96E0-0A13-4D1D-AFC6-D198C20BE77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210C96E0-0A13-4D1D-AFC6-D198C20BE77C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,5 +18,7 @@ namespace checkout.com.api.Stores
         Task<T> UpdateAsync(string id, T entity);
 
         Task<bool> DeleteAsync(string id);
+
+        Task<int> Count();
     }
 }
