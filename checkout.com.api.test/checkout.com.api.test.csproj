@@ -18,9 +18,6 @@
 
   <ItemGroup>
     <Folder Include="ActionTest\" />
-    <Folder Include="ConfigurationTest\" />
-    <Folder Include="ControllerTest\" />
-    <Folder Include="ServiceTest\" />
   </ItemGroup>
 
   <ItemGroup>

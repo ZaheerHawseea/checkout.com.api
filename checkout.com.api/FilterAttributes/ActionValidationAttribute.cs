@@ -18,31 +18,32 @@ namespace checkout.com.api.FilterAttributes
             if (!context.ModelState.IsValid)
             {
                 context.Result = new BadRequestObjectResult(context.ModelState);
-                string result = ReadBodyAsString(context.HttpContext.Request);
+                //string result = ReadBodyAsString(context.HttpContext.Request);
             }
         }
 
-        private string ReadBodyAsString(HttpRequest request)
-        {
-            var initialBody = request.Body; // Workaround
+        //private string ReadBodyAsString(HttpRequest request)
+        //{
+        //    var initialBody = request.Body; // Workaround
 
-            try
-            {
-                request.EnableRewind();
+        //    try
+        //    {
+        //        request.EnableRewind();
+        //        request.Body.Position = 0;
 
-                using (StreamReader reader = new StreamReader(request.Body))
-                {
-                    string text = reader.ReadToEnd();
-                    return text;
-                }
-            }
-            finally
-            {
-                // Workaround so MVC action will be able to read body as well
-                request.Body = initialBody;
-            }
+        //        using (StreamReader reader = new StreamReader(request.Body))
+        //        {
+        //            string text = reader.ReadToEnd();
+        //            return text;
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        //Workaround so MVC action will be able to read body as well
+        //        request.Body = initialBody;
+        //    }
 
-            return string.Empty;
-        }
+        //    return string.Empty;
+        //}
     }
 }

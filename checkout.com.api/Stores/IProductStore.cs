@@ -9,5 +9,6 @@ namespace checkout.com.api.Stores
     public interface IProductStore<TProduct> : IStore<TProduct>
         where TProduct : Product
     {
+
     }
 }

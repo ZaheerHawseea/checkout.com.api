@@ -7,16 +7,17 @@ using FluentAssertions;
 using checkout.com.api.Entities;
 using checkout.com.api.Stores.Default;
 using checkout.com.api.Stores;
+using checkout.com.api.test.Fixture;
 
-namespace checkout.com.api.test.StoreTest
+namespace checkout.com.api.test.Store
 {
-    public class ProductStoreTests
+    public class ProductStoreTests : IClassFixture<ProductStoreFixture>
     {
         private readonly IProductStore<Product> ProductStore;
 
-        public ProductStoreTests()
+        public ProductStoreTests(ProductStoreFixture fixture)
         {
-            ProductStore = new InMemoryProductStore();
+            ProductStore = fixture.Store;
         }
 
         [Fact]
@@ -29,7 +30,7 @@ namespace checkout.com.api.test.StoreTest
             var productReturned = await ProductStore.AddAsync(product);
 
             // Assert
-            ProductStore.Count().Result.Should().Be(1);
+            ProductStore.Count().Result.Should().BeGreaterThan(0);
             productReturned.Name.Should().Be(product.Name);
             productReturned.Brand.Should().Be(product.Brand);
             productReturned.Price.Should().Be(product.Price);
@@ -38,10 +39,6 @@ namespace checkout.com.api.test.StoreTest
         [Fact]
         public async void ProductsShouldBeListed()
         {
-            // Arrange
-            var product = new Product() { Name = "Asus Rog Motherboard", Brand = "Asus", Price = 530 };
-            await ProductStore.AddAsync(product);
-
             // Act
             var products = await ProductStore.FindAllAsync();
 
@@ -53,8 +50,7 @@ namespace checkout.com.api.test.StoreTest
         public async void ProductByIdShouldBeReturned()
         {
             // Arrange
-            var product = new Product() { Name = "Asus Rog Motherboard", Brand = "Asus", Price = 530 };
-            await ProductStore.AddAsync(product);
+            var product = new Product() { Id = "P003", Name = "MSI GeForce 1080Ti", Brand = "MSI", Price = 664 };
 
             // Act
             var productReturned = await ProductStore.FindByIdAsync(product.Id);
@@ -71,10 +67,7 @@ namespace checkout.com.api.test.StoreTest
         public async void ProductShouldBeUpdated()
         {
             // Arrange
-            var product = new Product() { Id = "001", Name = "Asus Rog Motherboard", Brand = "Asus", Price = 530 };
-            await ProductStore.AddAsync(product);
-
-            product.Name = "Asus Rog Strix Z370 Motherboard";
+            var product = new Product() { Id = "P002", Name = "Intel Core i7 8th Gen", Brand = "Intel", Price = 478 };
 
             // Act
             var productReturned = await ProductStore.UpdateAsync(product.Id, product);
@@ -89,12 +82,8 @@ namespace checkout.com.api.test.StoreTest
         [Fact]
         public async void ProductShouldBeDeleted()
         {
-            // Arrange
-            var product = new Product() { Id = "001", Name = "Asus Rog Motherboard", Brand = "Asus", Price = 530 };
-            await ProductStore.AddAsync(product);
-
             // Act
-            var result = await ProductStore.DeleteAsync(product.Id);
+            var result = await ProductStore.DeleteAsync("P001");
 
             // Assert
             result.Should().Be(true);
