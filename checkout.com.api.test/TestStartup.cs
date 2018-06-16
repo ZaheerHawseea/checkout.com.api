@@ -14,18 +14,19 @@ namespace checkout.com.api.test
 {
     public class TestStartup : Microsoft.AspNetCore.Hosting.StartupBase
     {
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // Configure the HTTP request pipeline
         public override void Configure(IApplicationBuilder app)
         {
             app.UseCheckoutService("api");
 
-            // Now seed the database
+            // Configure additional test services
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 serviceScope.ConfigureTest();
             }
         }
 
+        // Configure checkout services to the di container
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddCheckoutServices();

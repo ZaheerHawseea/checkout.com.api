@@ -11,15 +11,30 @@ using checkout.com.api.test.Fixture;
 
 namespace checkout.com.api.test.Store
 {
+    /// <summary>
+    /// Class containing the tests of the product store
+    /// </summary>
     public class ProductStoreTests : IClassFixture<ProductStoreFixture>
     {
+        /// <summary>
+        /// The <see cref="IProductStore{TProduct}"/> dependancy
+        /// </summary>
         private readonly IProductStore<Product> ProductStore;
 
+        /// <summary>
+        /// Initialise a new instance of <see cref="ProductStoreTests"/>
+        /// </summary>
+        /// <param name="fixture">
+        /// The <see cref="ProductStoreFixture"/> dependancy
+        /// </param>
         public ProductStoreTests(ProductStoreFixture fixture)
         {
             ProductStore = fixture.Store;
         }
 
+        /// <summary>
+        /// Test whether a product is added
+        /// </summary>
         [Fact]
         public async void ProductShouldBeAdded()
         {
@@ -36,6 +51,9 @@ namespace checkout.com.api.test.Store
             productReturned.Price.Should().Be(product.Price);
         }
 
+        /// <summary>
+        /// Test wether all products are retrieved
+        /// </summary>
         [Fact]
         public async void ProductsShouldBeListed()
         {
@@ -46,6 +64,9 @@ namespace checkout.com.api.test.Store
             products.Count().Should().BeGreaterThan(0);
         }
 
+        /// <summary>
+        /// Test whether a specific product is retrieved
+        /// </summary>
         [Fact]
         public async void ProductByIdShouldBeReturned()
         {
@@ -63,6 +84,9 @@ namespace checkout.com.api.test.Store
             productReturned.Price.Should().Be(product.Price);
         }
 
+        /// <summary>
+        /// Test whether a product is updated
+        /// </summary>
         [Fact]
         public async void ProductShouldBeUpdated()
         {
@@ -79,6 +103,9 @@ namespace checkout.com.api.test.Store
             productReturned.Price.Should().Be(product.Price);
         }
 
+        /// <summary>
+        /// Test wether a product is deleted
+        /// </summary>
         [Fact]
         public async void ProductShouldBeDeleted()
         {

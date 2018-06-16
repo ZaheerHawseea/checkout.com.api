@@ -12,6 +12,7 @@ namespace checkout.com.api
 {
     public class Program
     {
+        // Main entry point
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();

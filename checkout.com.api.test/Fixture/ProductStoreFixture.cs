@@ -8,10 +8,19 @@ using System.Threading.Tasks;
 
 namespace checkout.com.api.test.Fixture
 {
+    /// <summary>
+    /// Fixture class for the product store
+    /// </summary>
     public class ProductStoreFixture
     {
+        /// <summary>
+        /// The <see cref="IProductStore{TProduct}"/> dependancy
+        /// </summary>
         public IProductStore<Product> Store { get; private set; }
 
+        /// <summary>
+        /// Initialise a new <see cref="ProductStoreFixture"/> instance
+        /// </summary>
         public ProductStoreFixture()
         {
             Store = new InMemoryProductStore();
@@ -19,6 +28,9 @@ namespace checkout.com.api.test.Fixture
             Seed();
         }
 
+        /// <summary>
+        /// Populate test data
+        /// </summary>
         private async void Seed()
         {
             foreach (var product in TestData.Products)

@@ -7,8 +7,23 @@ using checkout.com.api.Entities;
 
 namespace checkout.com.api.Action.Default
 {
+    /// <summary>
+    /// The default implementation of the process order action
+    /// </summary>
     public class DefaultProcessOrder : IProcessOrder
     {
+        /// <summary>
+        /// Execute the default process order action
+        /// </summary>
+        /// <param name="order">
+        /// The <see cref="Order"/> entity
+        /// </param>
+        /// <param name="billing">
+        /// The <see cref="Billing"/> dtp
+        /// </param>
+        /// <returns>
+        /// Asynchronous <see cref="Task"/> operation of the action
+        /// </returns>
         public Task ExecuteAsync(Order order, Billing billing)
         {
             // TODO: Logics to be added here do the connection to the processing logics..either calling another .NET library or via an API.

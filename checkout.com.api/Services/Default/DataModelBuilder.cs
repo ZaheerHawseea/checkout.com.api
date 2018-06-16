@@ -9,17 +9,32 @@ using checkout.com.api.Dto;
 
 namespace checkout.com.api.Services.Default
 {
+    /// <summary>
+    /// Default implementation of <see cref="IModelBuilder"/>
+    /// </summary>
     public class DataModelBuilder : IModelBuilder
     {
+        /// <summary>
+        /// Retrieve the entity data model for odata
+        /// </summary>
+        /// <param name="serviceProvider">
+        /// The service object that contain the assemblies
+        /// </param>
+        /// <returns>
+        /// The entity data model
+        /// </returns>
         public IEdmModel GetEdmModel(IServiceProvider serviceProvider)
         {
             var builder = new ODataConventionModelBuilder(serviceProvider);
 
+            builder.Namespace = Constants.Namespace;
+
+            // Register odata entities
             builder.EntitySet<Product>(nameof(Product));
             builder.EntitySet<Item>(nameof(Item));
             builder.EntitySet<Order>(nameof(Order));
 
-            builder.Namespace = Constants.Namespace;
+            // Register odata actions
             builder.EntityType<Order>()
                 .Action(Constants.Actions.ProcessOrder)
                 .Parameter<Billing>(Constants.Actions.Parameters.Billing);
@@ -36,6 +51,7 @@ namespace checkout.com.api.Services.Default
                 .Action(Constants.Actions.ClearOrder)
                 .Parameter<bool>(Constants.Actions.Parameters.Delete);
 
+            // Enable odata query
             builder.EntityType<Item>().Count().Filter().OrderBy().Expand().Select();
 
             return builder.GetEdmModel();

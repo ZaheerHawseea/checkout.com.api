@@ -15,18 +15,29 @@ using checkout.com.api.Action.Default;
 
 namespace checkout.com.api.Configuration
 {
+    /// <summary>
+    /// Extension methods for <see cref="IServiceCollection"/>
+    /// </summary>
     public static class ServiceCollectionExtension
     {
+        /// <summary>
+        /// Add the checkout service depedencies
+        /// </summary>
+        /// <param name="services">
+        /// The di container
+        /// </param>
         public static void AddCheckoutServices(this IServiceCollection services)
         {
+            // Add odata services
             services.AddOData();
 
+            // Add mvc services with action filters
             services.AddMvc(options => {
                 options.Filters.Add(new ActionValidationAttribute());
             })
-                    .AddXmlDataContractSerializerFormatters();
+                    .AddXmlDataContractSerializerFormatters(); // Enable application/xml formatter
 
-            // Register dependancies
+            // Register depedencies with the di container
             services.AddTransient<IProductStore<Product>, InMemoryProductStore>();
             services.AddTransient<IItemStore<Item>, InMemoryItemStore>();
             services.AddTransient<IOrderStore<Order>, InMemoryOrderStore>();

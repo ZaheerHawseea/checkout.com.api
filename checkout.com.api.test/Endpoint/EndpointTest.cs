@@ -13,37 +13,65 @@ using checkout.com.api.Dto;
 
 namespace checkout.com.api.test.Endpoint
 {
+    /// <summary>
+    /// Integration tests for the checkout service
+    /// </summary>
     public class EndpointTest :
         IClassFixture<TestService>,
         IClassFixture<RestClient>
     {
+        /// <summary>
+        /// The <see cref="TestService"/>
+        /// </summary>
         private readonly TestService service;
+
+        /// <summary>
+        /// The <see cref="RestClient"/>
+        /// </summary>
         private readonly RestClient client;
 
+        /// <summary>
+        /// Base url of the api
+        /// </summary>
         private const string url = "/api";
 
+        /// <summary>
+        /// Initialise a new instance of <see cref="EndpointTest"/>
+        /// </summary>
+        /// <param name="service">
+        /// The <see cref="TestService"/> fixture
+        /// </param>
+        /// <param name="client">
+        /// The <see cref="RestClient"/> fixture
+        /// </param>
         public EndpointTest(TestService service, RestClient client)
         {
             this.service = service;
             this.client = client;
         }
 
+        /// <summary>
+        /// Endpoint test - GET /Product
+        /// </summary>
         [Fact]
-        public async Task GetProductTest()
+        public async void GetProductTest()
         {
             // Act
             var response = await client.GetAsync(service.GetClient(), $"{url}/Product");
 
+            // Assert
             var result = await response.Content.ReadAsAsync<EntityResponse<Product>>();
 
-            // Assert
             response.IsSuccessStatusCode.Should().BeTrue();
             result.Value.Should().NotBeNull();
             result.Value.Count().Should().BeGreaterThan(0);
         }
 
+        /// <summary>
+        /// Endpoint test - POST /Product
+        /// </summary>
         [Fact]
-        public async Task CreateProductTest()
+        public async void CreateProductTest()
         {
             // Arrange
             var product = new Product() { Name = "Asus Rog Motherboard", Brand = "Price", Price = 350 };
@@ -55,22 +83,28 @@ namespace checkout.com.api.test.Endpoint
             response.IsSuccessStatusCode.Should().BeTrue();
         }
 
+        /// <summary>
+        /// Endpoint test - GET /Order
+        /// </summary>
         [Fact]
-        public async Task GetOrderTest()
+        public async void GetOrderTest()
         {
             // Act
             var response = await client.GetAsync(service.GetClient(), $"{url}/Order");
 
+            // Assert
             var result = await response.Content.ReadAsAsync<EntityResponse<Order>>();
 
-            // Assert
             response.IsSuccessStatusCode.Should().BeTrue();
             result.Value.Should().NotBeNull();
             result.Value.Count().Should().BeGreaterThan(0);
         }
 
+        /// <summary>
+        /// Endpoint test - POST /Order
+        /// </summary>
         [Fact]
-        public async Task CreateOrderTest()
+        public async void CreateOrderTest()
         {
             // Arrange
             var order = new Order() { CustomerName = "James Cameron" };
@@ -82,8 +116,11 @@ namespace checkout.com.api.test.Endpoint
             response.IsSuccessStatusCode.Should().BeTrue();
         }
 
+        /// <summary>
+        /// Endpoint test - POST /Order({id})/Checkout.AddItems
+        /// </summary>
         [Fact]
-        public async Task AddItemsToOrderTest()
+        public async void AddItemsToOrderTest()
         {
             // Arrange
             var content = new EntityListRequest<Item>()
@@ -101,8 +138,11 @@ namespace checkout.com.api.test.Endpoint
             response.IsSuccessStatusCode.Should().BeTrue();
         }
 
+        /// <summary>
+        /// Endpoint test - POST /Order({id})/Checkout.RemoveItems
+        /// </summary>
         [Fact]
-        public async Task RemoveItemsToOrderTest()
+        public async void RemoveItemsToOrderTest()
         {
             // Arrange
             var content = new EntityListRequest<Item>()
@@ -120,8 +160,11 @@ namespace checkout.com.api.test.Endpoint
             response.IsSuccessStatusCode.Should().BeTrue();
         }
 
+        /// <summary>
+        /// Endpoint test - POST /Order({id})/Checkout.Clear
+        /// </summary>
         [Fact]
-        public async Task ClearOrderTest()
+        public async void ClearOrderTest()
         {
             // Arrange
             var content = new ClearOrderRequest() { Delete = false };
@@ -133,8 +176,11 @@ namespace checkout.com.api.test.Endpoint
             response.IsSuccessStatusCode.Should().BeTrue();
         }
 
+        /// <summary>
+        /// Endpoint test - POST /Order({id})/Checkout.Process
+        /// </summary>
         [Fact]
-        public async Task ProcessOrderTest()
+        public async void ProcessOrderTest()
         {
             // Arrange
             var content = new ProcessOrderRequest()
@@ -148,6 +194,22 @@ namespace checkout.com.api.test.Endpoint
 
             // Act
             var response = await client.PostAsync(service.GetClient(), $"{url}/Order('OR001')/Checkout.Process", content);
+
+            // Assert
+            response.IsSuccessStatusCode.Should().BeTrue();
+        }
+
+        /// <summary>
+        /// Endpoint test - PATCH /Item({id})
+        /// </summary>
+        [Fact]
+        public async void ChangeQuantityTest()
+        {
+            // Arrange
+            var item = new Item() { Id = "I001", Quantity = 5 };
+
+            // Act
+            var response = await client.PatchAsync(service.GetClient(), $"{url}/Item('{item.Id}')", item);
 
             // Assert
             response.IsSuccessStatusCode.Should().BeTrue();

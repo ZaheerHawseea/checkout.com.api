@@ -18,14 +18,13 @@ namespace checkout.com.api
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        // Configure services to the di container
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCheckoutServices();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // Configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app)
         {
             app.UseCheckoutService("api");

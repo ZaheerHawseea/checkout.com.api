@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ActionTest\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\checkout.com.api\checkout.com.api.csproj" />
   </ItemGroup>
 

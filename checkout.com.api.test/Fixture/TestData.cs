@@ -6,8 +6,14 @@ using checkout.com.api.Entities;
 
 namespace checkout.com.api.test.Fixture
 {
+    /// <summary>
+    /// Initial set of test data
+    /// </summary>
     public static class TestData
     {
+        /// <summary>
+        /// List of <see cref="Product"/> entity
+        /// </summary>
         public static IList<Product> Products = new List<Product>()
         {
             new Product(){ Id = "P001", Name = "Asus Rog Strix Motherboard", Brand = "Asus", Price = 350 },
@@ -15,6 +21,9 @@ namespace checkout.com.api.test.Fixture
             new Product(){ Id = "P003", Name = "MSI GeForce 1080Ti", Brand = "MSI", Price = 664 }
         };
 
+        /// <summary>
+        /// List of <see cref="Item"/> entity
+        /// </summary>
         public static IList<Item> Items = new List<Item>()
         {
             new Item(){ Id = "I001", OrderId = "OR001", ProductId = "P001", Quantity = 1 },
@@ -23,6 +32,9 @@ namespace checkout.com.api.test.Fixture
             new Item(){ Id = "I004", OrderId = "OR003", ProductId = "P002", Quantity = 3 }
         };
 
+        /// <summary>
+        /// List of <see cref="Order"/> entity
+        /// </summary>
         public static IList<Order> Orders = new List<Order>()
         {
             new Order(){  Id = "OR001", CustomerName = "Zaheer Hawseea" },
