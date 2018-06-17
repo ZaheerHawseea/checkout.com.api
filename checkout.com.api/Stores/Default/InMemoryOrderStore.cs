@@ -29,7 +29,10 @@ namespace checkout.com.api.Stores.Default
         {
             order.Id = order.Id ?? Guid.NewGuid().ToString();
 
-            Orders.Add(order);
+            if (!Orders.Any(o => o.Id == order.Id))
+            {
+                Orders.Add(order);
+            }
 
             return Task.FromResult(order);
         }

@@ -1,0 +1,11 @@
+C:\Git\checkout.com.client\checkout.com.client\bin\Debug\netcoreapp2.1\checkout.com.client.deps.json
+C:\Git\checkout.com.client\checkout.com.client\bin\Debug\netcoreapp2.1\checkout.com.client.runtimeconfig.json
+C:\Git\checkout.com.client\checkout.com.client\bin\Debug\netcoreapp2.1\checkout.com.client.runtimeconfig.dev.json
+C:\Git\checkout.com.client\checkout.com.client\bin\Debug\netcoreapp2.1\checkout.com.client.dll
+C:\Git\checkout.com.client\checkout.com.client\bin\Debug\netcoreapp2.1\checkout.com.client.pdb
+C:\Git\checkout.com.client\checkout.com.client\obj\Debug\netcoreapp2.1\checkout.com.client.csprojResolveAssemblyReference.cache
+C:\Git\checkout.com.client\checkout.com.client\obj\Debug\netcoreapp2.1\checkout.com.client.csproj.CoreCompileInputs.cache
+C:\Git\checkout.com.client\checkout.com.client\obj\Debug\netcoreapp2.1\checkout.com.client.AssemblyInfoInputs.cache
+C:\Git\checkout.com.client\checkout.com.client\obj\Debug\netcoreapp2.1\checkout.com.client.AssemblyInfo.cs
+C:\Git\checkout.com.client\checkout.com.client\obj\Debug\netcoreapp2.1\checkout.com.client.dll
+C:\Git\checkout.com.client\checkout.com.client\obj\Debug\netcoreapp2.1\checkout.com.client.pdb
