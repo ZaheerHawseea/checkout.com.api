@@ -61,7 +61,7 @@ POST http://localhost:51573/api/Order('id')/Checkout.AddItems
 ```
 ```json
 {
-"Items" : 
+   "Items" : 
    [
       {
          "OrderId" : "id",
@@ -78,7 +78,7 @@ POST http://localhost:51573/api/Order('id')/Checkout.RemoveItems
 ```
 ```json
 {
-"Items" : 
+   "Items" : 
    [
       {
          "OrderId" : "id",
