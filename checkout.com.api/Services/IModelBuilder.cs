@@ -9,7 +9,7 @@ namespace checkout.com.api.Services
     /// <summary>
     /// The interface for building the EdmModel used by OData
     /// </summary>
-    public interface IModelBuilder
+    internal interface IModelBuilder
     {
         /// <summary>
         /// Retrieve the entity data model for odata

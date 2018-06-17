@@ -26,7 +26,7 @@ namespace checkout.com.api.Action.Default
         /// </returns>
         public Task ExecuteAsync(Order order, Billing billing)
         {
-            // TODO: Logics to be added here do the connection to the processing logics..either calling another .NET library or via an API.
+            // TODO: Assumption that the logic for order processing will be provided as a separate nuget package/api and the logics can be implemented here.
             return Task.FromResult(true);
         }
     }

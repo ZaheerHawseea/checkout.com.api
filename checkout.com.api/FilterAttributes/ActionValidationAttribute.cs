@@ -14,7 +14,7 @@ namespace checkout.com.api.FilterAttributes
     /// <summary>
     /// An action filter that validate the model of incoming requests
     /// </summary>
-    public class ActionValidationAttribute : ActionFilterAttribute
+    internal class ActionValidationAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {

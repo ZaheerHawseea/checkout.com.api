@@ -2,13 +2,13 @@
 OData API for checkout.com technical test. Built with asp.net core and visual studio 2017.
 
 ### Folder Structure
-- checkout.com.api contain the solution to build the api. ll entities, controllers, stores and logics are defined there.
+- checkout.com.api contain the solution to build the api. It contains all entities, controllers, stores and business logics.
 - checkout.com.api.test is the unit test based on xunit and fluentassertions.
 - checkout.com.api.client is the client code used to consume the api.
 - Checkout.postman_collection.json is the list of api requests in postman.
 
 ### Api Calls
-- OData $metadata endpoint  
+- Odata $metadata endpoint  
 ```javascript
 GET http://localhost:51573/api/$metadata
 ```
@@ -18,7 +18,7 @@ GET http://localhost:51573/api/$metadata
 GET http://localhost:51573/api/Product
 ```
 
-- Get specify product  
+- Get specific product  
 ```javascript
 GET http://localhost:51573/api/Product('id')
 ```
@@ -61,10 +61,11 @@ POST http://localhost:51573/api/Order('id')/Checkout.AddItems
 ```
 ```json
 {
-	"Items" : [
+	"Items" : 
+    [
 		{
-			"OrderId" : "8414cc46-ead2-4ed6-8d2e-cc9401aad701",
-			"ProductId" : "992ce680-5f16-4072-8c26-392b0d52b67a",
+			"OrderId" : "id",
+			"ProductId" : "productId",
 			"Quantity" : 1
 		}	
 	]
@@ -77,10 +78,11 @@ POST http://localhost:51573/api/Order('id')/Checkout.RemoveItems
 ```
 ```json
 {
-	"Items" : [
+	"Items" : 
+    [
 		{
-			"OrderId" : "224e1abf-7d59-4f0f-94bc-c489ad35ba6d",
-			"Id" : "3c4fc5a0-5ec1-4dfc-b832-bd9d0263d08c",
+			"OrderId" : "id",
+			"Id" : "itemId",
 		}	
 	]
 }
@@ -102,7 +104,8 @@ POST http://localhost:51573/api/Order('id')/Checkout.Process
 ```
 ```json
 {
-	"Billing" : {
+	"Billing" : 
+    {
 		"CreditCardNumber" : "0046521005706",
 		"CCV" : "327"
 	}
@@ -111,7 +114,7 @@ POST http://localhost:51573/api/Order('id')/Checkout.Process
 
 - Change Quantity of an item  
 ```javascript
-PATCH http://localhost:51573/api/Item('id)
+PATCH http://localhost:51573/api/Item('id')
 ```
 ```json
 {

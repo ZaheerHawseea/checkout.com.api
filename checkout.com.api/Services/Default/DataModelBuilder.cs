@@ -12,7 +12,7 @@ namespace checkout.com.api.Services.Default
     /// <summary>
     /// Default implementation of <see cref="IModelBuilder"/>
     /// </summary>
-    public class DataModelBuilder : IModelBuilder
+    internal class DataModelBuilder : IModelBuilder
     {
         /// <summary>
         /// Retrieve the entity data model for odata
