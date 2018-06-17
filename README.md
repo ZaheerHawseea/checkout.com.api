@@ -1,13 +1,13 @@
 # checkout.com.api
 OData API for checkout.com technical test. Built with asp.net core and visual studio 2017.
 
-Folder Structure:
+### Folder Structure
 - checkout.com.api contain the solution to build the api. ll entities, controllers, stores and logics are defined there.
 - checkout.com.api.test is the unit test based on xunit and fluentassertions.
 - checkout.com.api.client is the client code used to consume the api.
 - Checkout.postman_collection.json is the list of api requests in postman.
 
-Api Calls:
+### Api Calls
 - OData $metadata endpoint.
 GET http://localhost:51573/api/$metadata
 
@@ -21,7 +21,11 @@ GET http://localhost:51573/api/Product('id')
 POST http://localhost:51573/api/Product
 
 ```json
-{"Name":"Asus Rog Motherboard","Brand":"Price","Price":350.0}
+{
+    "Name":"Asus Rog Motherboard",
+    "Brand":"Price",
+    "Price":350.0
+}
 ```
 
 - Get all orders.
@@ -48,7 +52,7 @@ POST http://localhost:51573/api/Order('id')/Checkout.Process
 - Change Quantity of an item.
 PUT/PATCH http://localhost:51573/api/Item('id)
 
-Creating an odata client:
+### Creating an odata client
 To create a client that consume an odata api:
 
 1. Install odata client generator extension in visual studio.
