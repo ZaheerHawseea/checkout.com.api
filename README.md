@@ -29,9 +29,9 @@ POST http://localhost:51573/api/Product
 ```
 ```json
 {
-    "Name" : "Asus Rog Motherboard",
-    "Brand" : "Price",
-    "Price" : 350.0
+   "Name" : "Asus Rog Motherboard",
+   "Brand" : "Price",
+   "Price" : 350.0
 }
 ```
 
@@ -51,7 +51,7 @@ POST http://localhost:51573/api/Order
 ```
 ```json
 {
-	"CustomerName" : "Zaheer Hawseea"
+   "CustomerName" : "Zaheer Hawseea"
 }
 ```
 
@@ -61,14 +61,14 @@ POST http://localhost:51573/api/Order('id')/Checkout.AddItems
 ```
 ```json
 {
-	"Items" : 
-    [
-		{
-			"OrderId" : "id",
-			"ProductId" : "productId",
-			"Quantity" : 1
-		}	
-	]
+"Items" : 
+   [
+      {
+         "OrderId" : "id",
+         "ProductId" : "productId",
+         "Quantity" : 1
+      }	
+   ]
 }
 ```
 
@@ -78,13 +78,13 @@ POST http://localhost:51573/api/Order('id')/Checkout.RemoveItems
 ```
 ```json
 {
-	"Items" : 
-    [
-		{
-			"OrderId" : "id",
-			"Id" : "itemId",
-		}	
-	]
+"Items" : 
+   [
+      {
+         "OrderId" : "id",
+         "Id" : "itemId",
+      }	
+   ]
 }
 ```
 
@@ -94,7 +94,7 @@ POST http://localhost:51573/api/Order('id')/Checkout.Clear
 ```
 ```json
 {
-	"Delete" : false
+   "Delete" : false
 }
 ```
 
@@ -104,11 +104,11 @@ POST http://localhost:51573/api/Order('id')/Checkout.Process
 ```
 ```json
 {
-	"Billing" : 
-    {
-		"CreditCardNumber" : "0046521005706",
-		"CCV" : "327"
-	}
+   "Billing" : 
+   {
+      "CreditCardNumber" : "0046521005706",
+      "CCV" : "327"
+   }
 }
 ```
 
@@ -118,7 +118,7 @@ PATCH http://localhost:51573/api/Item('id')
 ```
 ```json
 {
-	"Quantity" : 2
+   "Quantity" : 2
 }
 ```
 
