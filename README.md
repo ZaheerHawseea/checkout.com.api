@@ -8,48 +8,52 @@ Folder Structure:
 - Checkout.postman_collection.json is the list of api requests in postman.
 
 Api Calls:
-- OData $metadata endpoint
+- OData $metadata endpoint.
 GET http://localhost:51573/api/$metadata
 
-- Get all products
+- Get all products.
 GET http://localhost:51573/api/Product
 
-- Get specify product
+- Get specify product.
 GET http://localhost:51573/api/Product('id')
 
-- Add product
+- Add product.
 POST http://localhost:51573/api/Product
 
-- Get all orders
+```json
+{"Name":"Asus Rog Motherboard","Brand":"Price","Price":350.0}
+```
+
+- Get all orders.
 GET http://localhost:51573/api/Order
 
-- Get list of items for an order
+- Get list of items for an order.
 GET http://localhost:51573/api/Item?$filter=OrderId eq 'orderId'
 
-- Create order
+- Create order.
 POST http://localhost:51573/api/Order
 
-- Add items to an order
+- Add items to an order.
 POST http://localhost:51573/api/Order('id')/Checkout.AddItems
 
-- Remove items from an order
+- Remove items from an order.
 POST http://localhost:51573/api/Order('id')/Checkout.RemoveItems
 
-- Clear an order
+- Clear an order.
 POST http://localhost:51573/api/Order('id')/Checkout.Clear
 
-- Process order
+- Process order.
 POST http://localhost:51573/api/Order('id')/Checkout.Process
 
-- Change Quantity of an item
+- Change Quantity of an item.
 PUT/PATCH http://localhost:51573/api/Item('id)
 
 Creating an odata client:
 To create a client that consume an odata api:
 
-1. Install odata client generator extension in visual studio
+1. Install odata client generator extension in visual studio.
 2. Add an odata client - This will generate all the codes needed to communicate  with the api.
 3. Update the api url & run custom tool.
 4. Use objects to communicate with the api.
 
-reference: https://docs.microsoft.com/en-us/aspnet/web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-client-app
+[Reference](https://docs.microsoft.com/en-us/aspnet/web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-client-app)
