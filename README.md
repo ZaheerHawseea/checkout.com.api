@@ -8,49 +8,116 @@ OData API for checkout.com technical test. Built with asp.net core and visual st
 - Checkout.postman_collection.json is the list of api requests in postman.
 
 ### Api Calls
-- OData $metadata endpoint.
+- OData $metadata endpoint  
+```javascript
 GET http://localhost:51573/api/$metadata
+```
 
-- Get all products.
+- Get all products  
+```javascript
 GET http://localhost:51573/api/Product
+```
 
-- Get specify product.
+- Get specify product  
+```javascript
 GET http://localhost:51573/api/Product('id')
+```
 
-- Add product.
+- Add product 
+```javascript
 POST http://localhost:51573/api/Product
-
+```
 ```json
 {
-    "Name":"Asus Rog Motherboard",
-    "Brand":"Price",
-    "Price":350.0
+    "Name" : "Asus Rog Motherboard",
+    "Brand" : "Price",
+    "Price" : 350.0
 }
 ```
 
-- Get all orders.
+- Get all orders  
+```javascript
 GET http://localhost:51573/api/Order
+```
 
-- Get list of items for an order.
+- Get list of items for an order  
+```javascript
 GET http://localhost:51573/api/Item?$filter=OrderId eq 'orderId'
+```
 
-- Create order.
+- Create order  
+```javascript
 POST http://localhost:51573/api/Order
+```
+```json
+{
+	"CustomerName" : "Zaheer Hawseea"
+}
+```
 
-- Add items to an order.
+- Add items to an order 
+```javascript 
 POST http://localhost:51573/api/Order('id')/Checkout.AddItems
+```
+```json
+{
+	"Items" : [
+		{
+			"OrderId" : "8414cc46-ead2-4ed6-8d2e-cc9401aad701",
+			"ProductId" : "992ce680-5f16-4072-8c26-392b0d52b67a",
+			"Quantity" : 1
+		}	
+	]
+}
+```
 
-- Remove items from an order.
+- Remove items from an order  
+```javascript
 POST http://localhost:51573/api/Order('id')/Checkout.RemoveItems
+```
+```json
+{
+	"Items" : [
+		{
+			"OrderId" : "224e1abf-7d59-4f0f-94bc-c489ad35ba6d",
+			"Id" : "3c4fc5a0-5ec1-4dfc-b832-bd9d0263d08c",
+		}	
+	]
+}
+```
 
-- Clear an order.
+- Clear an order  
+```javascript
 POST http://localhost:51573/api/Order('id')/Checkout.Clear
+```
+```json
+{
+	"Delete" : false
+}
+```
 
-- Process order.
+- Process order  
+```javascript
 POST http://localhost:51573/api/Order('id')/Checkout.Process
+```
+```json
+{
+	"Billing" : {
+		"CreditCardNumber" : "0046521005706",
+		"CCV" : "327"
+	}
+}
+```
 
-- Change Quantity of an item.
-PUT/PATCH http://localhost:51573/api/Item('id)
+- Change Quantity of an item  
+```javascript
+PATCH http://localhost:51573/api/Item('id)
+```
+```json
+{
+	"Quantity" : 2
+}
+```
 
 ### Creating an odata client
 To create a client that consume an odata api:
